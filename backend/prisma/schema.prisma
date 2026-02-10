@@ -81,10 +81,12 @@ model Product {
   type        ProductType
   price       Float
   quantity    Int?        // for rentals & food
+  dailyCapacity Int?      // for food - max orders per day
   imageUrl    String?
 
-  vendor      Vendor      @relation(fields: [vendorId], references: [id])
-  orderItems  OrderItem[]
+  vendor        Vendor        @relation(fields: [vendorId], references: [id])
+  orderItems    OrderItem[]
+  availabilities Availability[]
 
   createdAt   DateTime    @default(now())
 }
@@ -121,6 +123,9 @@ model OrderItem {
   productId String
   quantity Int
   price    Float
+  startDate DateTime?  // for rentals & services
+  endDate   DateTime?  // for rentals & services
+  deliveryDate DateTime?  // for food items
 
   order    Order    @relation(fields: [orderId], references: [id])
   product  Product  @relation(fields: [productId], references: [id])
@@ -147,3 +152,13 @@ model Review {
 
   createdAt DateTime @default(now())
 }
+model Availability {
+  id        String   @id @default(uuid())
+  productId String
+  startDate DateTime
+  endDate   DateTime
+  quantity  Int
+
+  product   Product  @relation(fields: [productId], references: [id])
+}
+
