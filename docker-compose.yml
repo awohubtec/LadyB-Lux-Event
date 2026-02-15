@@ -29,7 +29,7 @@ services:
     ports:
       - "3001:3001"
     volumes:
-      - ./backend:/app
+    ##  - ./backend:/app
     command: >
       sh -c "npx prisma migrate deploy &&
              npm run start:prod"
