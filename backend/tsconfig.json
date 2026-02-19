@@ -24,7 +24,6 @@
 
    },
   "include": [
-    "src/**/*",            // Include all files in the src folder
     "generated/prisma/**/*"  // Explicitly include the generated Prisma client files
   ]
 }
