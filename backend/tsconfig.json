@@ -12,7 +12,8 @@
     "allowSyntheticDefaultImports": true,
     "target": "ES2023",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./dist/src",  // Output compiled files to dist/src
+    "rootDir": "./src",      // Keep source files in the src folder
     "baseUrl": "./",
     "incremental": true,
     "skipLibCheck": true,
@@ -24,6 +25,6 @@
 
    },
   "include": [
-    "generated/prisma/**/*"  // Explicitly include the generated Prisma client files
+    "src/**/*"  // Include all files in the src folder
   ]
 }
